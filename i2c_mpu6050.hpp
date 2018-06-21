@@ -7,15 +7,23 @@ class i2c_mpu6050{
 private:
 	hwlib::i2c_bus_bit_banged_scl_sda & bus;
 	uint8_t chipAddr;
+	uint16_t acXoffset = 0x00;
+	uint16_t acYoffset = 0x00;
+	uint32_t acZoffset = 0x00;
+	uint16_t GyXoffset = 0x00;
+	uint16_t GyYoffset = 0x00;
+	uint16_t GyZoffset = 0x00;
 	
 	void initialize();
 	void header_values();
+
 public:
 	i2c_mpu6050(hwlib::i2c_bus_bit_banged_scl_sda & bus, uint16_t chipAddr):
 	bus ( bus ),
 	chipAddr ( chipAddr )
 	{
 	initialize();
+	calibrate();
 	}
 	
 	void set_register(const uint8_t &regAddr, const uint8_t & data);
@@ -25,6 +33,11 @@ public:
 	
 	void display_raw_values();
 	void display_values();
+	void display_rpy(); //rpy is short for roll - pitch and yaw.
+	void set_calibrate_values(const uint16_t & acXoffset, const uint16_t & acYoffset, const uint16_t & acZoffset, const uint16_t & GyXoffset,
+	const uint16_t & GyYoffset, const uint16_t & GyZoffset);
+	void calibrate();
+	void show_calibrate_values();
 };
 
 
