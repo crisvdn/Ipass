@@ -124,12 +124,13 @@ void i2c_mpu6050::display_values(){
 	}
 }
 
-void i2c_mpu6050::display_rpy(){
+void i2c_mpu6050::display_rp(){
 	double AcX, AcY, AcZ, Ty, GyX, GyY, GyZ = 0x00;
 	double accelX, accelY, accelZ, gyroX, gyroY, gyroZ = 0;
 	int16_t roll, pitch = 0;
 	
 	while(1){
+		//reading raw values.
 		AcX = read_values(0x3B);
 		AcY = read_values(0x3D);
 		AcZ = read_values(0x3F);
@@ -146,10 +147,9 @@ void i2c_mpu6050::display_rpy(){
 		
 		//Calculating roll.
 		roll = 180 * atan (accelX/sqrt(accelY*accelY + accelZ*accelZ))/3.141592;
-		
 		//calculating pitch.
 		pitch = 180 * atan (accelY/sqrt(accelX*accelX + accelZ*accelZ))/3.141592;
-		
+		//Output pitch and roll to screen.
 		hwlib::cout << "pitch: " << pitch  << ' ';
 		hwlib::cout << " : roll: " << roll << '\n';
 		hwlib::wait_ms(20);

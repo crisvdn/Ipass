@@ -12,6 +12,6 @@ int main(){
 	auto gyro = i2c_mpu6050(bus, MPU_addr);
 	gyro.show_calibrate_values();
 	//gyro.display_values();
-	gyro.display_rpy();
+	gyro.display_rp();
 	//gyro.display_raw_values();
 }

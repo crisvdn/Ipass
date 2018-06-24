@@ -33,11 +33,12 @@ public:
 	
 	void display_raw_values();
 	void display_values();
-	void display_rpy(); //rpy is short for roll, pitch and yaw.
+	void display_rp(); //rpy is short for roll, pitch and yaw.
 	void set_calibrate_values(const int16_t & accelXoffset, const int16_t & accelYoffset,const int16_t & accelZoffset,
 	const int16_t & GyroXoffset, const int16_t & GyroYoffset, const int16_t & GyroZoffset);
 	void calibrate();
 	void show_calibrate_values();
+	void start_measure();
 };
 
 
