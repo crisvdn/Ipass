@@ -23,10 +23,10 @@ void i2c_mpu6050::initialize(){
 //FS_SEL=3 16.4	±2000 		LSB/(º/s)
 
 void i2c_mpu6050::header_values(){
-	hwlib::cout << hwlib::setw(1) <<  "Acc X: "  << hwlib::setw(8)<< " Acc Y: " <<
-	hwlib::setw(13)<< " Acc Z: "<<hwlib::setw(16)<< " Temperature: " <<
-	hwlib::setw(17) <<" X axis: "<< hwlib::setw(20) <<" Y axis: "<<
-	hwlib::setw(23) <<" Z axis: " << '\n';
+	hwlib::cout << hwlib::setw(1) <<  "Acc X: "  <<
+	hwlib::setw(8)<< " Acc Y: " <<	hwlib::setw(13)<< " Acc Z: "<<
+	hwlib::setw(16)<< " Temperature: " <<hwlib::setw(17) <<" X axis: "<<
+	hwlib::setw(20) <<" Y axis: "<<	hwlib::setw(23) <<" Z axis: " << '\n';
 }
 
 void i2c_mpu6050::calibrate(){
@@ -56,12 +56,6 @@ void i2c_mpu6050::calibrate(){
 		GyZoffset += (GyZ);
 		hwlib::cout <<hwlib::dec << hwlib::showbase << "AcZ: " << AcZ << '\n';
 	}
-	hwlib::cout <<hwlib::dec << hwlib::showbase << "acXoffset: " << acXoffset << '\n';
-	hwlib::cout <<hwlib::dec << hwlib::showbase << "acYoffset: " << acYoffset << '\n';
-	hwlib::cout <<hwlib::dec << hwlib::showbase << "acZoffset: " << acZoffset << '\n';
-	hwlib::cout <<hwlib::dec << hwlib::showbase << "GyXoffset: " << GyXoffset << '\n';
-	hwlib::cout <<hwlib::dec << hwlib::showbase << "GyYoffset: " << GyYoffset << '\n';
-	hwlib::cout <<hwlib::dec << hwlib::showbase << "GyZoffset: " << GyZoffset << '\n';
 	acXoffset = (acXoffset / 10);
 	acYoffset = (acYoffset / 10);
 	acZoffset = (acZoffset / 10);
