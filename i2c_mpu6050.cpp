@@ -15,12 +15,17 @@ void i2c_mpu6050::initialize(){
 //AFS_SEL=1 	±4	8,192	LSB/g
 //AFS_SEL=2 	±8	4,096 	LSB/g
 //AFS_SEL=3 	±16	2,048 	LSB/g
+//
+//Accelerometer sensitivity is set to ±8. The raw values need to be divided by 4096(minus the offset) to get the values in linear gravitational accelaration.
+
 
 //GYROSCOPE SENSITIVITY	Full-Scale Range 
 //FS_SEL=0 131	±250 º/s	LSB/(º/s)
 //FS_SEL=1 65.5	±500 º/s	LSB/(º/s)
 //FS_SEL=2 32.8	±1000 º/s	LSB/(º/s)
 //FS_SEL=3 16.4	±2000 		LSB/(º/s)
+//
+//Gyroscope sensitivity is set to 250 degrees per second. The raw values need to be divided by 131(minus the offset) to get the values of angular change in degrees per second.
 
 void i2c_mpu6050::header_values(){
 	hwlib::cout << hwlib::setw(1) <<  "Acc X: "  <<
@@ -134,7 +139,6 @@ void i2c_mpu6050::display_rp(){
 		AcX = read_values(0x3B);
 		AcY = read_values(0x3D);
 		AcZ = read_values(0x3F);
-		Ty = read_values(0x41);
 		GyX = read_values(0x43);
 		GyY = read_values(0x45);
 		GyZ = read_values(0x47);
