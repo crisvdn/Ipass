@@ -3,6 +3,38 @@
 
 #include "hwlib.hpp"
 
+// register addresses and hexadecimal values for the MPU-6050.
+enum commands : uint8_t {
+	GYRO_CONFIG = 0x1B, 	 
+	ACCEL_CONFIG = 0x1C,	
+	PWR_MGMT_1 = 0x6B, 	
+	FIFO_EN = 0x23,
+	CONFIG = 0x1A,
+	WHO_AM_I = 0x75,
+	ACCEL_XOUT_H = 0x3B, //bit 15-8
+	ACCEL_XOUT_L = 0x3C, //bit 7-0 
+	ACCEL_YOUT_H = 0x3D,
+	ACCEL_YOUT_L = 0x3E,		
+	ACCEL_ZOUT_H = 0x3F,
+	ACCEL_ZOUT_L = 0x40,
+	TEMP_OUT_H   = 0x41,
+	TEMP_OUT_L   = 0x42,
+	GYRO_XOUT_H  = 0x43,
+	GYRO_XOUT_L  = 0x44,
+	GYRO_YOUT_H  = 0x45,
+	GYRO_YOUT_L  = 0x46,
+	GYRO_ZOUT_H  = 0x47,
+	GYRO_ZOUT_L  = 0x48,
+	AFS_SEL_0 = 0x00,
+	AFS_SEL_1 = 0x08,
+	AFS_SEL_2 = 0x10,
+	AFS_SEL_3 = 0x18,
+	FS_SEL_0 = 0x00,
+	FS_SEL_1 = 0x08,
+	FS_SEL_2 = 0x10,
+	FS_SEL_3 = 0x18
+};
+
 class i2c_mpu6050{
 private:
 	hwlib::i2c_bus_bit_banged_scl_sda & bus;

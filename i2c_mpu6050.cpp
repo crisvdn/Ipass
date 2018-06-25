@@ -1,6 +1,6 @@
 #include "i2c_mpu6050.hpp"
-#include "gyroscope.hpp"
 #include "math.h"
+
 //Private functions
 
 void i2c_mpu6050::initialize(){
@@ -84,25 +84,25 @@ void i2c_mpu6050::calibrate(){
 	int16_t AcX, AcY, AcZ, GyX, GyY, GyZ;
 	hwlib::wait_ms(100);
 	for(unsigned int i=0; i < 100; i++){
-		AcX = read_bytes(0x3B);
-		AcY = read_bytes(0x3D);
-		AcZ = read_bytes(0x3F);
-		GyX = read_bytes(0x43);
-		GyY = read_bytes(0x45);
-		GyZ = read_bytes(0x47);
+		AcX = read_bytes(ACCEL_XOUT_H);
+		AcY = read_bytes(ACCEL_YOUT_H);
+		AcZ = read_bytes(ACCEL_ZOUT_H);
+		GyX = read_bytes(GYRO_XOUT_H);
+		GyY = read_bytes(GYRO_YOUT_H);
+		GyZ = read_bytes(GYRO_ZOUT_H);
 	}
 	for(unsigned int i=0; i < 10; i++){
-		AcX = read_bytes(0x3B);
+		AcX = read_bytes(ACCEL_XOUT_H);
 		acXoffset += (AcX);
-		AcY = read_bytes(0x3D);
+		AcY = read_bytes(ACCEL_YOUT_H);
 		acYoffset += (AcY);
-		AcZ = read_bytes(0x3F);
+		AcZ = read_bytes(ACCEL_ZOUT_H);
 		acZoffset += (AcZ);
-		GyX = read_bytes(0x43);
+		GyX = read_bytes(GYRO_XOUT_H);
 		GyXoffset += (GyX);
-		GyY = read_bytes(0x45);
+		GyY = read_bytes(GYRO_YOUT_H);
 		GyYoffset += (GyY);
-		GyZ = read_bytes(0x47);
+		GyZ = read_bytes(GYRO_ZOUT_H);
 		GyZoffset += (GyZ);
 		hwlib::cout <<hwlib::dec << hwlib::showbase << "AcZ: " << AcZ << '\n';
 	}
@@ -126,13 +126,13 @@ void i2c_mpu6050::display_raw_values(){
 	int16_t AcX, AcY, AcZ, Ty, GyX, GyY, GyZ = 0x00;
 	header_values();
 	while(1){
-		AcX = read_bytes(0x3B);
-		AcY = read_bytes(0x3D);
-		AcZ = read_bytes(0x3F);
-		Ty = read_bytes(0x41);
-		GyX = read_bytes(0x43);
-		GyY = read_bytes(0x45);
-		GyZ = read_bytes(0x47);
+		AcX = read_bytes(ACCEL_XOUT_H);
+		AcY = read_bytes(ACCEL_YOUT_H);
+		AcZ = read_bytes(ACCEL_ZOUT_H);
+		Ty = read_bytes(TEMP_OUT_H);
+		GyX = read_bytes(GYRO_XOUT_H);
+		GyY = read_bytes(GYRO_YOUT_H);
+		GyZ = read_bytes(GYRO_ZOUT_H);
 		hwlib::cout << hwlib::dec <<hwlib::setw(1) << AcX << ' '; 
 		hwlib::cout << hwlib::dec <<hwlib::setw(8) << AcY << ' '; 
 		hwlib::cout << hwlib::dec <<hwlib::setw(13) << AcZ << ' ';
@@ -149,26 +149,26 @@ void i2c_mpu6050::display_values(){
 	int16_t accelX, accelY, accelZ, gyroX, gyroY, gyroZ = 0x00;
 	header_values();
 	while(1){
-	AcX = read_bytes(0x3B);
-	AcY = read_bytes(0x3D);
-	AcZ = read_bytes(0x3F);
-	Ty = read_bytes(0x41);
-	GyX = read_bytes(0x43);
-	GyY = read_bytes(0x45);
-	GyZ = read_bytes(0x47);
-	accelX = ((AcX - acXoffset) / accScale);
-	accelY = ((AcY - acYoffset) / accScale);
-	accelZ = ((AcZ - acZoffset) / accScale) + 1;
-	gyroX = ((GyX - GyXoffset) / gyroScale);
-	gyroY = ((GyY - GyYoffset) / gyroScale);
-	gyroZ = ((GyZ - GyZoffset) / gyroScale);
-	hwlib::cout << hwlib::dec <<hwlib::setw(1) << accelX << ' '; 
-	hwlib::cout << hwlib::dec <<hwlib::setw(8) << accelY << ' '; 
-	hwlib::cout << hwlib::dec <<hwlib::setw(13) << accelZ << ' ';
-	hwlib::cout << hwlib::dec <<hwlib::setw(16) << (Ty / 340) + 36 << ' ';
-	hwlib::cout << hwlib::dec <<hwlib::setw(17) << gyroX << ' ';
-	hwlib::cout << hwlib::dec <<hwlib::setw(20) << gyroY << ' ';
-	hwlib::cout << hwlib::dec <<hwlib::setw(23) << gyroZ << '\n';
+		AcX = read_bytes(ACCEL_XOUT_H);
+		AcY = read_bytes(ACCEL_YOUT_H);
+		AcZ = read_bytes(ACCEL_ZOUT_H);
+		Ty = read_bytes(TEMP_OUT_H);
+		GyX = read_bytes(GYRO_XOUT_H);
+		GyY = read_bytes(GYRO_YOUT_H);
+		GyZ = read_bytes(GYRO_ZOUT_H);
+		accelX = ((AcX - acXoffset) / accScale);
+		accelY = ((AcY - acYoffset) / accScale);
+		accelZ = ((AcZ - (acZoffset-100)) / accScale) + 1;
+		gyroX = ((GyX - GyXoffset) / gyroScale);
+		gyroY = ((GyY - GyYoffset) / gyroScale);
+		gyroZ = ((GyZ - GyZoffset) / gyroScale);
+		hwlib::cout << hwlib::dec <<hwlib::setw(1) << accelX << ' '; 
+		hwlib::cout << hwlib::dec <<hwlib::setw(8) << accelY << ' '; 
+		hwlib::cout << hwlib::dec <<hwlib::setw(13) << accelZ << ' ';
+		hwlib::cout << hwlib::dec <<hwlib::setw(16) << (Ty / 340) + 36 << ' ';
+		hwlib::cout << hwlib::dec <<hwlib::setw(17) << gyroX << ' ';
+		hwlib::cout << hwlib::dec <<hwlib::setw(20) << gyroY << ' ';
+		hwlib::cout << hwlib::dec <<hwlib::setw(23) << gyroZ << '\n';
 	}
 }
 
@@ -179,12 +179,12 @@ void i2c_mpu6050::display_roll_pitch(){
 	
 	while(1){
 		//reading raw values.
-		AcX = read_bytes(0x3B);
-		AcY = read_bytes(0x3D);
-		AcZ = read_bytes(0x3F);
-		GyX = read_bytes(0x43);
-		GyY = read_bytes(0x45);
-		GyZ = read_bytes(0x47);
+		AcX = read_bytes(ACCEL_XOUT_H);
+		AcY = read_bytes(ACCEL_YOUT_H);
+		AcZ = read_bytes(ACCEL_ZOUT_H);
+		GyX = read_bytes(GYRO_XOUT_H);
+		GyY = read_bytes(GYRO_YOUT_H);
+		GyZ = read_bytes(GYRO_ZOUT_H);
 		accelX = ((AcX - acXoffset) / accScale);
 		accelY = ((AcY - acYoffset) / accScale);
 		accelZ = ((AcZ - acZoffset) / accScale) + 1;
@@ -206,9 +206,9 @@ int i2c_mpu6050::read_roll(){
 	double AcX, AcY, AcZ, accelX, accelY, accelZ;
 	double pi = 3.141592;
 	int roll = 0;
-	AcX = read_bytes(0x3B);
-	AcY = read_bytes(0x3D);
-	AcZ = read_bytes(0x3F);
+	AcX = read_bytes(ACCEL_XOUT_H);
+	AcY = read_bytes(ACCEL_YOUT_H);
+	AcZ = read_bytes(ACCEL_ZOUT_H);
 	accelX = ((AcX - acXoffset) / accScale);
 	accelY = ((AcY - acYoffset) / accScale);
 	accelZ = ((AcZ - acZoffset) / accScale) + 1;
@@ -221,9 +221,9 @@ int i2c_mpu6050::read_pitch(){
 	double AcX, AcY, AcZ, accelX, accelY, accelZ;
 	double pi = 3.141592;
 	int pitch = 0;
-	AcX = read_bytes(0x3B);
-	AcY = read_bytes(0x3D);
-	AcZ = read_bytes(0x3F);
+	AcX = read_bytes(ACCEL_XOUT_H);
+	AcY = read_bytes(ACCEL_YOUT_H);
+	AcZ = read_bytes(ACCEL_ZOUT_H);
 	accelX = ((AcX - acXoffset) / accScale);
 	accelY = ((AcY - acYoffset) / accScale);
 	accelZ = ((AcZ - acZoffset) / accScale) + 1;
