@@ -130,9 +130,9 @@ void i2c_mpu6050::display_values(){
 }
 
 void i2c_mpu6050::display_rp(){
-	double AcX, AcY, AcZ, Ty, GyX, GyY, GyZ = 0x00;
-	double accelX, accelY, accelZ, gyroX, gyroY, gyroZ = 0;
-	int16_t roll, pitch = 0;
+	double AcX, AcY, AcZ, GyX, GyY, GyZ;
+	double accelX, accelY, accelZ, gyroX, gyroY, gyroZ, pi = 3.141592;
+	int16_t roll = 0, pitch = 0;
 	
 	while(1){
 		//reading raw values.
@@ -148,11 +148,10 @@ void i2c_mpu6050::display_rp(){
 		gyroX = ((GyX - GyXoffset) / 131);
 		gyroY = ((GyY - GyYoffset) / 131);
 		gyroZ = ((GyZ - GyZoffset) / 131);
-		
 		//Calculating roll.
-		roll = 180 * atan (accelX/sqrt(accelY*accelY + accelZ*accelZ))/3.141592;
+		roll = 180 * atan (accelX/sqrt(accelY*accelY + accelZ*accelZ))/pi;
 		//calculating pitch.
-		pitch = 180 * atan (accelY/sqrt(accelX*accelX + accelZ*accelZ))/3.141592;
+		pitch = 180 * atan (accelY/sqrt(accelX*accelX + accelZ*accelZ))/pi;
 		//Output pitch and roll to screen.
 		hwlib::cout << "pitch: " << pitch  << ' ';
 		hwlib::cout << " : roll: " << roll << '\n';
@@ -160,6 +159,35 @@ void i2c_mpu6050::display_rp(){
 	}
 }
 
+int i2c_mpu6050::read_roll(){
+	double AcX, AcY, AcZ, accelX, accelY, accelZ;
+	double pi = 3.141592;
+	int roll = 0;
+	AcX = read_values(0x3B);
+	AcY = read_values(0x3D);
+	AcZ = read_values(0x3F);
+	accelX = ((AcX - acXoffset) / 16384);
+	accelY = ((AcY - acYoffset) / 16384);
+	accelZ = ((AcZ - acZoffset) / 16384) + 1;
+	//Calculating roll.
+	roll = 180 * atan (accelX/sqrt(accelY*accelY + accelZ*accelZ))/pi;
+	return roll;
+}
+
+int i2c_mpu6050::read_pitch(){
+	double AcX, AcY, AcZ, accelX, accelY, accelZ;
+	double pi = 3.141592;
+	int pitch = 0;
+	AcX = read_values(0x3B);
+	AcY = read_values(0x3D);
+	AcZ = read_values(0x3F);
+	accelX = ((AcX - acXoffset) / 16384);
+	accelY = ((AcY - acYoffset) / 16384);
+	accelZ = ((AcZ - acZoffset) / 16384) + 1;
+	//Calculating roll.
+	pitch = 180 * atan (accelY/sqrt(accelX*accelX + accelZ*accelZ))/pi;
+	return pitch;
+}
 
 void i2c_mpu6050::set_register(const uint8_t &regAddr, const uint8_t & data){
 	hwlib::cout << "couting data from register: " << data << '\n';

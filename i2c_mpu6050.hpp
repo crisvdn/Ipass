@@ -7,12 +7,8 @@ class i2c_mpu6050{
 private:
 	hwlib::i2c_bus_bit_banged_scl_sda & bus;
 	uint8_t chipAddr;
-	int32_t acXoffset = 0x00;
-	int32_t acYoffset = 0x00;
-	int32_t acZoffset = 0x00;
-	int32_t GyXoffset = 0x00;
-	int32_t GyYoffset = 0x00;
-	int32_t GyZoffset = 0x00;
+	int32_t acXoffset = 0x00, acYoffset = 0x00, acZoffset = 0x00;
+	int32_t GyXoffset = 0x00, GyYoffset = 0x00, GyZoffset = 0x00;
 	
 	void initialize();
 	void header_values();
@@ -33,7 +29,9 @@ public:
 	
 	void display_raw_values();
 	void display_values();
-	void display_rp(); //rpy is short for roll, pitch and yaw.
+	void display_rp(); //rpy is short for roll & pitch.
+	int read_roll();
+	int read_pitch();
 	void set_calibrate_values(const int16_t & accelXoffset, const int16_t & accelYoffset,const int16_t & accelZoffset,
 	const int16_t & GyroXoffset, const int16_t & GyroYoffset, const int16_t & GyroZoffset);
 	void calibrate();
