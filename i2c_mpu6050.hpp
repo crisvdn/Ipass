@@ -43,6 +43,7 @@ private:
 	int32_t GyXoffset = 0x00, GyYoffset = 0x00, GyZoffset = 0x00;
 	double accScale = 0x00;
 	double gyroScale = 0x00;
+	double pi = 3.141592;
 	
 	void initialize();
 	void header_values();

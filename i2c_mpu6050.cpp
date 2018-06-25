@@ -95,12 +95,13 @@ void i2c_mpu6050::set_accel_gyro_scale(uint8_t FS_SEL, uint8_t AFS_SEL){
 
 void i2c_mpu6050::calibrate(){
 	hwlib::cout << "Calibrating device... Don't move the MPU-6050! \n";
-	int16_t AcX, AcY, AcZ, GyX, GyY, GyZ;
+	int16_t AcX, AcY, AcZ, GyX, GyY, GyZ, Ty;
 	hwlib::wait_ms(100);
 	for(unsigned int i=0; i < 100; i++){
 		AcX = read_bytes(ACCEL_XOUT_H);
 		AcY = read_bytes(ACCEL_YOUT_H);
 		AcZ = read_bytes(ACCEL_ZOUT_H);
+		Ty = read_bytes(TEMP_OUT_H);
 		GyX = read_bytes(GYRO_XOUT_H);
 		GyY = read_bytes(GYRO_YOUT_H);
 		GyZ = read_bytes(GYRO_ZOUT_H);
@@ -112,13 +113,13 @@ void i2c_mpu6050::calibrate(){
 		acYoffset += (AcY);
 		AcZ = read_bytes(ACCEL_ZOUT_H);
 		acZoffset += (AcZ);
+		Ty = read_bytes(TEMP_OUT_H);
 		GyX = read_bytes(GYRO_XOUT_H);
 		GyXoffset += (GyX);
 		GyY = read_bytes(GYRO_YOUT_H);
 		GyYoffset += (GyY);
 		GyZ = read_bytes(GYRO_ZOUT_H);
 		GyZoffset += (GyZ);
-		hwlib::cout <<hwlib::dec << hwlib::showbase << "AcZ: " << AcZ << '\n';
 	}
 	acXoffset = (acXoffset / 10);
 	acYoffset = (acYoffset / 10);
@@ -132,6 +133,7 @@ void i2c_mpu6050::calibrate(){
 	hwlib::cout <<hwlib::dec << hwlib::showbase << "GyXoffset: " << GyXoffset << '\n';
 	hwlib::cout <<hwlib::dec << hwlib::showbase << "GyYoffset: " << GyYoffset << '\n';
 	hwlib::cout <<hwlib::dec << hwlib::showbase << "GyZoffset: " << GyZoffset << '\n';
+	hwlib::wait_ms(100);
 	hwlib::cout << "Calibration done!\n";
 }
 
@@ -188,7 +190,7 @@ void i2c_mpu6050::display_values(){
 
 void i2c_mpu6050::display_roll_pitch(){
 	double AcX, AcY, AcZ, GyX, GyY, GyZ;
-	double accelX, accelY, accelZ, gyroX, gyroY, gyroZ, pi = 3.141592;
+	double accelX, accelY, accelZ, gyroX, gyroY, gyroZ;
 	int16_t roll = 0, pitch = 0;
 	
 	while(1){
@@ -218,7 +220,6 @@ void i2c_mpu6050::display_roll_pitch(){
 
 int i2c_mpu6050::read_roll(){
 	double AcX, AcY, AcZ, accelX, accelY, accelZ;
-	double pi = 3.141592;
 	int roll = 0;
 	AcX = read_bytes(ACCEL_XOUT_H);
 	AcY = read_bytes(ACCEL_YOUT_H);
@@ -233,7 +234,6 @@ int i2c_mpu6050::read_roll(){
 
 int i2c_mpu6050::read_pitch(){
 	double AcX, AcY, AcZ, accelX, accelY, accelZ;
-	double pi = 3.141592;
 	int pitch = 0;
 	AcX = read_bytes(ACCEL_XOUT_H);
 	AcY = read_bytes(ACCEL_YOUT_H);
