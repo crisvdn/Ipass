@@ -11,20 +11,22 @@ void i2c_mpu6050::initialize(){
 	set_register(CONFIG, 0x02); //Set config mode Digital Low Pass Filter to 2.
 }
 
-//ACCELEROMETER SENSITIVITY Full Scale Range	hexadecimal data;
-//AFS_SEL=0 	±2	16,384 	LSB/g				0x00
-//AFS_SEL=1 	±4	8,192	LSB/g				0x08
-//AFS_SEL=2 	±8	4,096 	LSB/g				0x10
-//AFS_SEL=3 	±16	2,048 	LSB/g				0x18
+//ACCELEROMETER SENSITIVITY Full Scale Range
+//AFS_SEL=0 	±2	16,384 	LSB/g
+//AFS_SEL=1 	±4	8,192	LSB/g	
+//AFS_SEL=2 	±8	4,096 	LSB/g
+//AFS_SEL=3 	±16	2,048 	LSB/g
 //
+//default initialisation
 //Accelerometer sensitivity is set to ±8. The raw values need to be divided by 4096(minus the offset) to get the values in linear gravitational accelaration.
 
-//GYROSCOPE 	SENSITIVITY		Full-Scale Range 			hexadecimal data;
-//FS_SEL=0 		131				±250 º/s	LSB/(º/s)		0x00	
-//FS_SEL=1 		65.5			±500 º/s	LSB/(º/s)		0x08
-//FS_SEL=2 		32.8			±1000 º/s	LSB/(º/s)		0x10
-//FS_SEL=3 		16.4			±2000 		LSB/(º/s)		0x18
+//GYROSCOPE 	SENSITIVITY		Full-Scale Range 	
+//FS_SEL=0 		131				±250 º/s	LSB/(º/s)
+//FS_SEL=1 		65.5			±500 º/s	LSB/(º/s)
+//FS_SEL=2 		32.8			±1000 º/s	LSB/(º/s)
+//FS_SEL=3 		16.4			±2000 º/s	LSB/(º/s)
 //
+//default initialisation
 //Gyroscope sensitivity is set to 250 degrees per second. The raw values need to be divided by 131(minus the offset) to get the values of angular change in degrees per second.
 
 void i2c_mpu6050::header_values(){
