@@ -77,6 +77,20 @@ int i2c_mpu6050::get_accel_scale(){
 }
 
 
+void i2c_mpu6050::set_accel_gyro_scale(uint8_t FS_SEL, uint8_t AFS_SEL){
+	if(FS_SEL < 4 && FS_SEL >= 0 && AFS_SEL < 4 && AFS_SEL >= 0){
+		FS_SEL = FS_SEL << 3;
+		AFS_SEL = AFS_SEL << 3;
+		set_register(GYRO_CONFIG, FS_SEL);
+		set_register(ACCEL_CONFIG, AFS_SEL);
+		accScale = get_accel_scale();
+		gyroScale = get_gyro_scale();
+		hwlib::cout << "accelerometer and gyro scale set.\n";
+	}else{
+		hwlib::cout << "Incorrect values were entered to set the accel & gyro scale. Accel & gyro scale are not set. \n";
+	}
+}
+
 //Public functions.
 
 void i2c_mpu6050::calibrate(){

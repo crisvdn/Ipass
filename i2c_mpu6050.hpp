@@ -43,6 +43,7 @@ private:
 	int32_t GyXoffset = 0x00, GyYoffset = 0x00, GyZoffset = 0x00;
 	double accScale = 0x00;
 	double gyroScale = 0x00;
+	
 	void initialize();
 	void header_values();
 	void check_identity();
@@ -62,6 +63,8 @@ public:
 	
 	int get_gyro_scale();
 	int get_accel_scale();
+	void set_accel_gyro_scale(uint8_t FS_SEL, uint8_t AFS_SEL);
+	
 	void set_register(const uint8_t &regAddr, const uint8_t & data);
 	
 	int16_t read_bytes(const uint8_t &regAddr);
