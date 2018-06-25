@@ -18,7 +18,6 @@ void i2c_mpu6050::initialize(){
 //
 //Accelerometer sensitivity is set to ±8. The raw values need to be divided by 4096(minus the offset) to get the values in linear gravitational accelaration.
 
-
 //GYROSCOPE SENSITIVITY	Full-Scale Range 
 //FS_SEL=0 131	±250 º/s	LSB/(º/s)
 //FS_SEL=1 65.5	±500 º/s	LSB/(º/s)
