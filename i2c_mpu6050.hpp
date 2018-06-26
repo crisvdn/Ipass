@@ -75,8 +75,13 @@ public:
 	void display_values();
 	void display_roll_pitch(); //rp is short for roll & pitch.
 	void display_calibrate_values();
+	
 	int read_roll();
 	int read_pitch();
+	int read_gyroX();
+	int read_gyroY();
+	int read_gyroZ();
+	
 	void set_calibrate_values(const int16_t & accelXoffset, const int16_t & accelYoffset,const int16_t & accelZoffset,
 	const int16_t & GyroXoffset, const int16_t & GyroYoffset, const int16_t & GyroZoffset);
 	void calibrate();

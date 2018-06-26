@@ -248,6 +248,25 @@ int i2c_mpu6050::read_pitch(){
 	return pitch;
 }
 
+int i2c_mpu6050::read_gyroX(){
+	int16_t AcX;
+	AcX = read_bytes(ACCEL_XOUT_H);
+	return AcX;
+}
+
+int i2c_mpu6050::read_gyroY(){
+	int16_t AcY;
+	AcY = read_bytes(ACCEL_YOUT_H);
+	return AcY;
+}
+
+int i2c_mpu6050::read_gyroZ(){
+	int16_t AcZ;
+	AcZ = read_bytes(ACCEL_ZOUT_H);
+	return AcZ;
+}
+
+
 void i2c_mpu6050::set_register(const uint8_t &regAddr, const uint8_t & data){
 	hwlib::cout << "couting data from register: " << data << '\n';
 	uint8_t _data[] = {regAddr, data};
