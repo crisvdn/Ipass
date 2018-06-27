@@ -6,7 +6,7 @@ or return it so you can do anything with it. Any customisation for user-preferre
 
 This library supports only I2C communication. So any versions like the MPU-6000 are not supported(SPI).
 
-[img]https://i.imgur.com/NcQi8zY.png[/img]
+![alt text](https://i.imgur.com/NcQi8zY.png)
 
 Link to datasheet:
 https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf
