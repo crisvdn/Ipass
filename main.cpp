@@ -1,18 +1,25 @@
 #include "hwlib.hpp"
 #include "i2c_mpu6050.hpp"
 
-int roll = 0, pitch = 0;
-int accelX = 0, accelY = 0, accelZ = 0;
-int gAccelX = 0, gAccelY = 0, gAccelZ = 0;
-int highestGX = 0, highestGY = 0, highestGZ =0;
-int highestAccelX = 0, highestAccelY = 0, highestAccelZ = 0;
-int lowestAccelX = 0, lowestAccelY = 0, lowestAccelZ = 0;
-int state = 0;
-uint8_t ID = 0;
+void reset_variables(){
+	highestAccelX = 0, highestAccelY = 0, highestAccelZ = 0;
+	lowestAccelX = 0, lowestAccelY = 0, lowestAccelZ = 0;
+	highestGX = 0, highestGY = 0, highestGZ = 0;
+}
+
+void setup_variables(){
+	int roll = 0, pitch = 0;
+	int accelX = 0, accelY = 0, accelZ = 0;
+	int gAccelX = 0, gAccelY = 0, gAccelZ = 0;
+	int highestGX = 0, highestGY = 0, highestGZ =0;
+	int highestAccelX = 0, highestAccelY = 0, highestAccelZ = 0;
+	int lowestAccelX = 0, lowestAccelY = 0, lowestAccelZ = 0;
+	int state = 0;
+}
 
 int main(){
+	setup_variables();
 	uint8_t MPU_addr = 0x68;
-	//uint8_t EEPROM_addr = 0x50;
 	hwlib::wait_ms(500);
 	//disable watchdog.
 	WDT->WDT_MR = WDT_MR_WDDIS;
@@ -21,8 +28,6 @@ int main(){
 	//creating buttons to switch between display modes.
 	auto button_forward = target::pin_in(target::pins::d5);
 	auto button_backward = target::pin_in(target::pins::d4);
-	//button_forward.direction_set_input();
-	//button_backward.direction_set_input();
 	
 	//creating scl & sda pins.
 	auto scl = target::pin_oc(target::pins::d9);
@@ -38,9 +43,9 @@ int main(){
 	
 	//creating mpu6050 object. assigning address & bus.
 	auto mpu = i2c_mpu6050(bus, MPU_addr);
-	//mpu.display_values();
 	mpu.display_calibrate_values();
 	while(1){
+		//creating simple menu to switch between displays with 2 buttons.
 		if(!button_forward.get()){
 			state ++;
 			hwlib::wait_ms(200);
@@ -64,6 +69,7 @@ int main(){
 			accelX = mpu.read_accelX();
 			accelY = mpu.read_accelY();
 			accelZ = mpu.read_accelZ();
+			//if statements to save the highest measured raw accelerometer value.
 			if(accelX > highestAccelX){
 				highestAccelX = accelX;
 			}
@@ -79,6 +85,7 @@ int main(){
 			accelX = mpu.read_accelX();
 			accelY = mpu.read_accelY();
 			accelZ = mpu.read_accelZ();
+			//if statements to save the lowest measured raw accelerometer value.
 			if(accelX < lowestAccelX){
 				lowestAccelX = accelX;
 			}
@@ -91,6 +98,7 @@ int main(){
 			display << "\t0901" << "\f Lowest accel value: " << "\n accel x: " << "\t0901" << lowestAccelX << "\n accel y: " << "\t0902 " << lowestAccelY <<
 			"\n accel z: " << "\t0903" << lowestAccelZ << "\t1307" << state << "/4" << hwlib::flush;
 		}else if(state == 4){
+			//if statement to save the highest measured filtered accelerometer value in G.
 			if(gAccelX > highestGX){
 				highestGX = gAccelX;
 			}
@@ -106,9 +114,7 @@ int main(){
 		}else if(state == 5){
 			display << "\t0901" << "\f Reset values?" << hwlib::flush;
 		}else if(state == 6){
-			highestAccelX = 0, highestAccelY = 0, highestAccelZ = 0;
-			lowestAccelX = 0, lowestAccelY = 0, lowestAccelZ = 0;
-			highestGX = 0, highestGY = 0, highestGZ = 0;
+			reset_variables();
 			state = 2;
 		}
 	}
