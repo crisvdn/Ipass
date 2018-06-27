@@ -6,9 +6,9 @@
 void i2c_mpu6050::initialize(){
 	hwlib::cout << "Initializing...\n";
 	set_register(PWR_MGMT_1, SLEEP_DISABLED); //Set sleep bit to 0. This will activate the chip.
-	set_register(ACCEL_CONFIG, AFS_SEL_0); //Set Accel configuration to +-8g Acceleration sensitivity.
+	set_register(ACCEL_CONFIG, AFS_SEL_1); //Set Accel configuration to ±4g Acceleration sensitivity.
 	set_register(GYRO_CONFIG, FS_SEL_0); //set Gyro configuration to 250 degrees/s
-	set_register(CONFIG, 0x02); //Set config mode Digital Low Pass Filter to 2.
+	set_register(CONFIG, 0x05); //Set config mode Digital Low Pass Filter to 2.
 }
 
 //ACCELEROMETER SENSITIVITY Full Scale Range
@@ -130,12 +130,6 @@ void i2c_mpu6050::calibrate(){
 	GyXoffset = (GyXoffset / 10);
 	GyYoffset = (GyYoffset / 10);
 	GyZoffset = (GyZoffset / 10);
-	hwlib::cout <<hwlib::dec << hwlib::showbase << "acXoffset: " << acXoffset << '\n';
-	hwlib::cout <<hwlib::dec << hwlib::showbase << "acYoffset: " << acYoffset << '\n';
-	hwlib::cout <<hwlib::dec << hwlib::showbase << "acZoffset: " << acZoffset << '\n';
-	hwlib::cout <<hwlib::dec << hwlib::showbase << "GyXoffset: " << GyXoffset << '\n';
-	hwlib::cout <<hwlib::dec << hwlib::showbase << "GyYoffset: " << GyYoffset << '\n';
-	hwlib::cout <<hwlib::dec << hwlib::showbase << "GyZoffset: " << GyZoffset << '\n';
 	hwlib::wait_ms(100);
 	hwlib::cout << "Calibration done!\n";
 }
@@ -189,6 +183,16 @@ void i2c_mpu6050::display_values(){
 		hwlib::cout << hwlib::dec <<hwlib::setw(20) << gyroY << ' ';
 		hwlib::cout << hwlib::dec <<hwlib::setw(23) << gyroZ << '\n';
 	}
+}
+
+void i2c_mpu6050::read_values(int& gAccelX, int &gAccelY, int &gAccelZ){
+	int16_t AcX, AcY, AcZ  = 0x00;
+	AcX = read_bytes(ACCEL_XOUT_H);
+	AcY = read_bytes(ACCEL_YOUT_H);
+	AcZ = read_bytes(ACCEL_ZOUT_H);
+	gAccelX = ((AcX - acXoffset) / accScale);
+	gAccelY = ((AcY - acYoffset) / accScale);
+	gAccelZ = ((AcZ - (acZoffset-100)) / accScale) + 1;
 }
 
 void i2c_mpu6050::display_roll_pitch(){
@@ -269,9 +273,8 @@ int i2c_mpu6050::read_accelZ(){
 
 
 void i2c_mpu6050::set_register(const uint8_t &regAddr, const uint8_t & data){
-	hwlib::cout << "couting data from register: " << data << '\n';
 	uint8_t _data[] = {regAddr, data};
-	hwlib::cout << "setting register 0x" <<hwlib::hex << regAddr << " with value: " << data << '\n';
+	hwlib::cout << "setting register 0x" <<hwlib::hex << regAddr << " with value:		" << data << '\n';
 	bus.write(chipAddr, _data, 2);
 }
 
@@ -283,7 +286,7 @@ int16_t i2c_mpu6050::read_bytes(const uint8_t &regAddr){
 	return ((_data[0] << 8) | _data[1]);
 }
 
-int16_t i2c_mpu6050::read_word(const uint8_t &regAddr){
+int8_t i2c_mpu6050::read_word(const uint8_t &regAddr){
 	uint8_t _regData[] = {regAddr};
 	uint8_t _data[1];
 	bus.write(chipAddr,_regData,1);
