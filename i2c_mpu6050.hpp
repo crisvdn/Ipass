@@ -1,7 +1,19 @@
+
+///@file
+
+#ifndef I2C_MPU6050_HPP
+#define I2C_MPU6050_HPP
+
+/// \mainpage
+/// This is the documentation of the MPU-6050 Library.
+/// \section MPU-6050
+///
+/// \section Boost License.
 ///
 ///		Author: Cris van der Nolle
 ///		Name: i2c_mpu6050
-///		Date: 28-6-2018
+///		Date: 27-6-2018
+/// \Section
 ///	Boost Software License - Version 1.0 - August 17th, 2003
 ///	Permission is hereby granted, free of charge, to any person or organization
 ///	obtaining a copy of the software and accompanying documentation covered by
@@ -22,16 +34,10 @@
 ///	FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
 ///	ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 ///	DEALINGS IN THE SOFTWARE.
-///
-///@file
-
-#ifndef I2C_MPU6050_HPP
-#define I2C_MPU6050_HPP
 
 
 #include "hwlib.hpp"
 
-// register addresses and hexadecimal values for the MPU-6050.
 /// \brief
 /// Enum commands to define register addresses and register most-used values.
 /// \details
