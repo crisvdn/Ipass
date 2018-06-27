@@ -32,7 +32,8 @@ enum commands : uint8_t {
 	FS_SEL_0 = 0x00,
 	FS_SEL_1 = 0x08,
 	FS_SEL_2 = 0x10,
-	FS_SEL_3 = 0x18
+	FS_SEL_3 = 0x18,
+	SLEEP_DISABLED = 0x00
 };
 
 class i2c_mpu6050{
@@ -48,7 +49,6 @@ private:
 	void initialize();
 	void header_values();
 	void check_identity();
-	//void test();
 
 public:
 	i2c_mpu6050(hwlib::i2c_bus_bit_banged_scl_sda & bus, uint8_t chipAddr):
@@ -62,6 +62,7 @@ public:
 	gyroScale = get_gyro_scale();
 	}
 	
+	void test();
 	int get_gyro_scale();
 	int get_accel_scale();
 	void set_accel_gyro_scale(uint8_t FS_SEL, uint8_t AFS_SEL);
@@ -78,9 +79,9 @@ public:
 	
 	int read_roll();
 	int read_pitch();
-	int read_gyroX();
-	int read_gyroY();
-	int read_gyroZ();
+	int read_accelX();
+	int read_accelY();
+	int read_accelZ();
 	
 	void set_calibrate_values(const int16_t & accelXoffset, const int16_t & accelYoffset,const int16_t & accelZoffset,
 	const int16_t & GyroXoffset, const int16_t & GyroYoffset, const int16_t & GyroZoffset);

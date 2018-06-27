@@ -5,7 +5,7 @@
 
 void i2c_mpu6050::initialize(){
 	hwlib::cout << "Initializing...\n";
-	set_register(PWR_MGMT_1, 0x00); //Set sleep bit to 0. This will activate the chip.
+	set_register(PWR_MGMT_1, SLEEP_DISABLED); //Set sleep bit to 0. This will activate the chip.
 	set_register(ACCEL_CONFIG, AFS_SEL_0); //Set Accel configuration to +-8g Acceleration sensitivity.
 	set_register(GYRO_CONFIG, FS_SEL_0); //set Gyro configuration to 250 degrees/s
 	set_register(CONFIG, 0x02); //Set config mode Digital Low Pass Filter to 2.
@@ -38,11 +38,12 @@ void i2c_mpu6050::header_values(){
 
 //default address is 0x68. If AD0 is pulled high, address is 0x69.
 void i2c_mpu6050::check_identity(){
+	hwlib::cout << "checking identity... \n";
 	uint8_t _data = read_word(WHO_AM_I);
 	if(_data == 0x68 || _data == 0x69){
-		hwlib::cout << "MPU-6050 found. registry address is: 0x" << hwlib::hex << _data << '\n';;
+		hwlib::cout << "[OK]	MPU-6050 found. registry address is: " << hwlib::hex << _data << '\n';;
 	}else{
-		hwlib::cout << "Couldn't verify identity of MPU-6050.";
+		hwlib::cout << "[FAIL]	Couldn't verify identity of MPU-6050.";
 	}
 	hwlib::wait_ms(100);
 }
@@ -248,19 +249,19 @@ int i2c_mpu6050::read_pitch(){
 	return pitch;
 }
 
-int i2c_mpu6050::read_gyroX(){
+int i2c_mpu6050::read_accelX(){
 	int16_t AcX;
 	AcX = read_bytes(ACCEL_XOUT_H);
 	return AcX;
 }
 
-int i2c_mpu6050::read_gyroY(){
+int i2c_mpu6050::read_accelY(){
 	int16_t AcY;
 	AcY = read_bytes(ACCEL_YOUT_H);
 	return AcY;
 }
 
-int i2c_mpu6050::read_gyroZ(){
+int i2c_mpu6050::read_accelZ(){
 	int16_t AcZ;
 	AcZ = read_bytes(ACCEL_ZOUT_H);
 	return AcZ;
@@ -313,3 +314,34 @@ void i2c_mpu6050::display_calibrate_values(){
 	hwlib::cout << hwlib::dec <<hwlib::setw(20) << GyYoffset << ' ';
 	hwlib::cout << hwlib::dec <<hwlib::setw(23) << GyZoffset << '\n';
 }
+
+void i2c_mpu6050::test(){
+	int8_t acScale = 0, gyrScale = 0, sleepBit = 0;
+	check_identity();
+	acScale = read_word(ACCEL_CONFIG);
+	gyrScale = read_word(GYRO_CONFIG);
+	sleepBit = read_word(PWR_MGMT_1);
+	sleepBit = sleepBit >> 6 & 0x02;
+	acScale = acScale >> 3 & 0x03;
+	gyrScale = gyrScale >> 3 & 0x03;
+	hwlib::cout << "Checking if sleepbit is disabled in PWR_MGMT_1 register...\n";
+	if(sleepBit == 0 || sleepBit == 2){
+		hwlib::cout << "[OK]	Sleep bit is disabled. \n";
+	}else{
+		hwlib::cout << "[FAIL]	Sleep bit is not disabled. \n";
+	}
+	hwlib::cout << "Checking gyrometer and accelerometer registers...\n";
+	if(acScale > 3){
+		hwlib::cout << "[FAIL]	Accelerometer scale is not set properly.\n";
+		hwlib::cout << "[FAIL]	Accelerometer scale: " << acScale << '\n';
+	}else{
+		hwlib::cout << "[OK]	Accelerometer scale is set properly.\n";
+		hwlib::cout << "[OK]	Accelerometer scale: " << acScale << '\n';
+	}if(gyrScale > 3){
+		hwlib::cout << "[FAIL]	Gyrometer scale is not set properly.\n";
+		hwlib::cout << "[FAIL]	Gyrometer scale: " << gyrScale << '\n';
+	}else{
+		hwlib::cout << "[OK]	Gyrometer scale is set properly.\n";
+		hwlib::cout << "[OK]	Gyrometer scale: " << gyrScale << '\n';
+	}
+};
