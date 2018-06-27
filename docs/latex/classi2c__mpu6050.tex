@@ -1,0 +1,307 @@
+\hypertarget{classi2c__mpu6050}{}\section{i2c\+\_\+mpu6050 Class Reference}
+\label{classi2c__mpu6050}\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+
+
+\mbox{\hyperlink{classi2c__mpu6050}{i2c\+\_\+mpu6050}} class creates an object out of an bus and a hexademical chip address from the M\+P\+U-\/6050.  
+
+
+
+
+{\ttfamily \#include $<$i2c\+\_\+mpu6050.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classi2c__mpu6050_a2cfbc4790fe516a2f3d84c44547afcf0}{i2c\+\_\+mpu6050}} (hwlib\+::i2c\+\_\+bus\+\_\+bit\+\_\+banged\+\_\+scl\+\_\+sda \&bus, uint8\+\_\+t chip\+Addr)
+\begin{DoxyCompactList}\small\item\em The constructor creates an object ouf of an scl \& sda line. The chipaddres is given with it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classi2c__mpu6050_a184e58b90e30780437d4dd3b0a1f2012}{test}} ()
+\begin{DoxyCompactList}\small\item\em A test function to read various registers and output if tests encountered issues or not. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classi2c__mpu6050_ad8b2972b2cb7f35c0737a3cc6ba35f68}{get\+\_\+gyro\+\_\+scale}} ()
+\begin{DoxyCompactList}\small\item\em This function reads the gyrometer register and sets the correct scaling integer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classi2c__mpu6050_a2c5020be3e7dda0123748577ce3346f5}{get\+\_\+accel\+\_\+scale}} ()
+\begin{DoxyCompactList}\small\item\em This function reads the accelerometer register and sets the correct scaling integer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classi2c__mpu6050_a92b1262ea3ec807f8b5b36f16b79d812}{set\+\_\+accel\+\_\+gyro\+\_\+scale}} (uint8\+\_\+t F\+S\+\_\+\+S\+EL, uint8\+\_\+t A\+F\+S\+\_\+\+S\+EL)
+\begin{DoxyCompactList}\small\item\em This function is to set the accelerometer and gyrometer scaling to your own preferred setting. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classi2c__mpu6050_a643297f7a19d0007979c80ace7c10daa}{set\+\_\+register}} (const uint8\+\_\+t \&reg\+Addr, const uint8\+\_\+t \&data)
+\begin{DoxyCompactList}\small\item\em This function sets a specific register. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{classi2c__mpu6050_ade55e40b4285d8a2212e88175e8b0b10}{read\+\_\+bytes}} (const uint8\+\_\+t \&reg\+Addr)
+\begin{DoxyCompactList}\small\item\em This function will read 2 bytes from a register address. \end{DoxyCompactList}\item 
+int8\+\_\+t \mbox{\hyperlink{classi2c__mpu6050_a54a1577831ede549ff05b96403d8ad62}{read\+\_\+word}} (const uint8\+\_\+t \&reg\+Addr)
+\begin{DoxyCompactList}\small\item\em This function will read 1 byte from a register address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classi2c__mpu6050_a24a1e7c044411670d724d1c3e411eea5}{display\+\_\+raw\+\_\+values}} ()
+\begin{DoxyCompactList}\small\item\em A function to output raw values of the accelerometer, temperature sensor and gyroscope to the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classi2c__mpu6050_ac5035930b0bc113e67c2838e17ae1460}{display\+\_\+values}} ()
+\begin{DoxyCompactList}\small\item\em A function to output filtered values of the accelerometer, temperature sensor and gyroscope to the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classi2c__mpu6050_ab416fccb252bc742b84416ae78e48f58}{display\+\_\+roll\+\_\+pitch}} ()
+\begin{DoxyCompactList}\small\item\em This function outputs the roll and pitch to the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classi2c__mpu6050_a6da4020009994ec37d4388ede0284074}{display\+\_\+calibrate\+\_\+values}} ()
+\begin{DoxyCompactList}\small\item\em This function outputs the calibrate values to the screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classi2c__mpu6050_a0ebe5455574a34f7c0355c96f9c30e9c}{read\+\_\+roll}} ()
+\begin{DoxyCompactList}\small\item\em This function returns the roll as an integer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classi2c__mpu6050_a5337dde97dfb9e5c1f7025ff338fa5d3}{read\+\_\+pitch}} ()
+\begin{DoxyCompactList}\small\item\em This function returns the pitch as an integer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classi2c__mpu6050_a9f2b78a6174b02bbac22fd21cbd18574}{read\+\_\+accelX}} ()
+\begin{DoxyCompactList}\small\item\em This function returns the raw value of accelerometer X axis. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classi2c__mpu6050_abe18e2ba5e0ceefa9462efbd46de4129}{read\+\_\+accelY}} ()
+\begin{DoxyCompactList}\small\item\em This function returns the raw value of accelerometer Y axis. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classi2c__mpu6050_ab338d829847b1ffbeaddad82e56bb80e}{read\+\_\+accelZ}} ()
+\begin{DoxyCompactList}\small\item\em This function returns the raw value of accelerometer Z axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classi2c__mpu6050_afd391b5f5322088d6831a05deaa6c4dd}{read\+\_\+values}} (int \&g\+AccelX, int \&g\+AccelY, int \&g\+AccelZ)
+\begin{DoxyCompactList}\small\item\em This function returns the filtered accelerometer values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classi2c__mpu6050_a232b262d69cb592aa65a1ed334104cc1}{set\+\_\+calibrate\+\_\+values}} (const int16\+\_\+t \&accel\+Xoffset, const int16\+\_\+t \&accel\+Yoffset, const int16\+\_\+t \&accel\+Zoffset, const int16\+\_\+t \&Gyro\+Xoffset, const int16\+\_\+t \&Gyro\+Yoffset, const int16\+\_\+t \&Gyro\+Zoffset)
+\begin{DoxyCompactList}\small\item\em A function to set calibrate values manually. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classi2c__mpu6050_af52506caa980c3103c601640de1dee9a}{calibrate}} ()
+\begin{DoxyCompactList}\small\item\em This function calibrates the M\+P\+U-\/6050. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{classi2c__mpu6050}{i2c\+\_\+mpu6050}} class creates an object out of an bus and a hexademical chip address from the M\+P\+U-\/6050. 
+
+The class creates an object that has a bit\+\_\+banged scl \& sda bus. These are from hwlib.\+hpp. Any I2C communication is done through functions of hwlib.\+hpp. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classi2c__mpu6050_a2cfbc4790fe516a2f3d84c44547afcf0}\label{classi2c__mpu6050_a2cfbc4790fe516a2f3d84c44547afcf0}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{i2c\+\_\+mpu6050()}{i2c\_mpu6050()}}
+{\footnotesize\ttfamily i2c\+\_\+mpu6050\+::i2c\+\_\+mpu6050 (\begin{DoxyParamCaption}\item[{hwlib\+::i2c\+\_\+bus\+\_\+bit\+\_\+banged\+\_\+scl\+\_\+sda \&}]{bus,  }\item[{uint8\+\_\+t}]{chip\+Addr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The constructor creates an object ouf of an scl \& sda line. The chipaddres is given with it. 
+
+The chipaddress is 0x68 with A\+D0 pulled to low. If A\+D0 is pulled to high, the address is 0x69. The constructor will also call various functions to set it up for easier usage. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classi2c__mpu6050_af52506caa980c3103c601640de1dee9a}\label{classi2c__mpu6050_af52506caa980c3103c601640de1dee9a}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!calibrate@{calibrate}}
+\index{calibrate@{calibrate}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{calibrate()}{calibrate()}}
+{\footnotesize\ttfamily void i2c\+\_\+mpu6050\+::calibrate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function calibrates the M\+P\+U-\/6050. 
+
+This function calibrates the M\+P\+U-\/6050. It does a quick reading 100 times to stabilize the temperature sensor for stable readings in the second 10 readings. Make sure to not move the M\+P\+U-\/6050 for proper calibration. \mbox{\Hypertarget{classi2c__mpu6050_a6da4020009994ec37d4388ede0284074}\label{classi2c__mpu6050_a6da4020009994ec37d4388ede0284074}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!display\+\_\+calibrate\+\_\+values@{display\+\_\+calibrate\+\_\+values}}
+\index{display\+\_\+calibrate\+\_\+values@{display\+\_\+calibrate\+\_\+values}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{display\+\_\+calibrate\+\_\+values()}{display\_calibrate\_values()}}
+{\footnotesize\ttfamily void i2c\+\_\+mpu6050\+::display\+\_\+calibrate\+\_\+values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function outputs the calibrate values to the screen. 
+
+This function is a get function for the calibrate values of the gyroscope X, Y and Z axis, and the accelerometer X, Y and Z axis. \mbox{\Hypertarget{classi2c__mpu6050_a24a1e7c044411670d724d1c3e411eea5}\label{classi2c__mpu6050_a24a1e7c044411670d724d1c3e411eea5}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!display\+\_\+raw\+\_\+values@{display\+\_\+raw\+\_\+values}}
+\index{display\+\_\+raw\+\_\+values@{display\+\_\+raw\+\_\+values}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{display\+\_\+raw\+\_\+values()}{display\_raw\_values()}}
+{\footnotesize\ttfamily void i2c\+\_\+mpu6050\+::display\+\_\+raw\+\_\+values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function to output raw values of the accelerometer, temperature sensor and gyroscope to the screen. 
+
+This function outputs raw values of the accelerometer(\+X, Y and Z axis), temperature reading(in °C) and gyroscope(\+X, Y, and Z axis). \mbox{\Hypertarget{classi2c__mpu6050_ab416fccb252bc742b84416ae78e48f58}\label{classi2c__mpu6050_ab416fccb252bc742b84416ae78e48f58}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!display\+\_\+roll\+\_\+pitch@{display\+\_\+roll\+\_\+pitch}}
+\index{display\+\_\+roll\+\_\+pitch@{display\+\_\+roll\+\_\+pitch}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{display\+\_\+roll\+\_\+pitch()}{display\_roll\_pitch()}}
+{\footnotesize\ttfamily void i2c\+\_\+mpu6050\+::display\+\_\+roll\+\_\+pitch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function outputs the roll and pitch to the screen. 
+
+This function outputs roll and pitch towards the screen in degrees. A negative value will be towards rolling towards the right or tilting with the front of the sensor downwards. \mbox{\Hypertarget{classi2c__mpu6050_ac5035930b0bc113e67c2838e17ae1460}\label{classi2c__mpu6050_ac5035930b0bc113e67c2838e17ae1460}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!display\+\_\+values@{display\+\_\+values}}
+\index{display\+\_\+values@{display\+\_\+values}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{display\+\_\+values()}{display\_values()}}
+{\footnotesize\ttfamily void i2c\+\_\+mpu6050\+::display\+\_\+values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function to output filtered values of the accelerometer, temperature sensor and gyroscope to the screen. 
+
+This function outputs raw values of the accelerometer(\+X, Y and Z axis), temperature reading(in °C) and gyroscope(\+X, Y, and Z axis). These values have been filtered with the offset and scaling. The gyroscope readings are in degrees per second. The accelerometer readings are in G-\/force. \mbox{\Hypertarget{classi2c__mpu6050_a2c5020be3e7dda0123748577ce3346f5}\label{classi2c__mpu6050_a2c5020be3e7dda0123748577ce3346f5}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!get\+\_\+accel\+\_\+scale@{get\+\_\+accel\+\_\+scale}}
+\index{get\+\_\+accel\+\_\+scale@{get\+\_\+accel\+\_\+scale}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{get\+\_\+accel\+\_\+scale()}{get\_accel\_scale()}}
+{\footnotesize\ttfamily int i2c\+\_\+mpu6050\+::get\+\_\+accel\+\_\+scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function reads the accelerometer register and sets the correct scaling integer. 
+
+This function reads the accelerometer register and sets the correct scaling integer. This scaling is necessary to convert raw values to filtered values(G-\/force). \mbox{\Hypertarget{classi2c__mpu6050_ad8b2972b2cb7f35c0737a3cc6ba35f68}\label{classi2c__mpu6050_ad8b2972b2cb7f35c0737a3cc6ba35f68}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!get\+\_\+gyro\+\_\+scale@{get\+\_\+gyro\+\_\+scale}}
+\index{get\+\_\+gyro\+\_\+scale@{get\+\_\+gyro\+\_\+scale}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{get\+\_\+gyro\+\_\+scale()}{get\_gyro\_scale()}}
+{\footnotesize\ttfamily int i2c\+\_\+mpu6050\+::get\+\_\+gyro\+\_\+scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function reads the gyrometer register and sets the correct scaling integer. 
+
+This function reads the gyrometer register and sets the correct scaling integer. This scaling is necessary to convert raw values to filtered values(degrees per second). \mbox{\Hypertarget{classi2c__mpu6050_a9f2b78a6174b02bbac22fd21cbd18574}\label{classi2c__mpu6050_a9f2b78a6174b02bbac22fd21cbd18574}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!read\+\_\+accelX@{read\+\_\+accelX}}
+\index{read\+\_\+accelX@{read\+\_\+accelX}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{read\+\_\+accel\+X()}{read\_accelX()}}
+{\footnotesize\ttfamily int i2c\+\_\+mpu6050\+::read\+\_\+accelX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function returns the raw value of accelerometer X axis. 
+
+This function returns the raw value of accelerometer X axis. No offset or scaling has been done on this value. \mbox{\Hypertarget{classi2c__mpu6050_abe18e2ba5e0ceefa9462efbd46de4129}\label{classi2c__mpu6050_abe18e2ba5e0ceefa9462efbd46de4129}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!read\+\_\+accelY@{read\+\_\+accelY}}
+\index{read\+\_\+accelY@{read\+\_\+accelY}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{read\+\_\+accel\+Y()}{read\_accelY()}}
+{\footnotesize\ttfamily int i2c\+\_\+mpu6050\+::read\+\_\+accelY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function returns the raw value of accelerometer Y axis. 
+
+This function returns the raw value of accelerometer Y axis. No offset or scaling has been done on this value. \mbox{\Hypertarget{classi2c__mpu6050_ab338d829847b1ffbeaddad82e56bb80e}\label{classi2c__mpu6050_ab338d829847b1ffbeaddad82e56bb80e}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!read\+\_\+accelZ@{read\+\_\+accelZ}}
+\index{read\+\_\+accelZ@{read\+\_\+accelZ}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{read\+\_\+accel\+Z()}{read\_accelZ()}}
+{\footnotesize\ttfamily int i2c\+\_\+mpu6050\+::read\+\_\+accelZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function returns the raw value of accelerometer Z axis. 
+
+This function returns the raw value of accelerometer Z axis. No offset or scaling has been done on this value. \mbox{\Hypertarget{classi2c__mpu6050_ade55e40b4285d8a2212e88175e8b0b10}\label{classi2c__mpu6050_ade55e40b4285d8a2212e88175e8b0b10}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!read\+\_\+bytes@{read\+\_\+bytes}}
+\index{read\+\_\+bytes@{read\+\_\+bytes}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{read\+\_\+bytes()}{read\_bytes()}}
+{\footnotesize\ttfamily int16\+\_\+t i2c\+\_\+mpu6050\+::read\+\_\+bytes (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \&}]{reg\+Addr }\end{DoxyParamCaption})}
+
+
+
+This function will read 2 bytes from a register address. 
+
+This function will read 2 bytes from a register address and the register address + 1. This data will be returned inside one int16\+\_\+t. 
+\begin{DoxyParams}{Parameters}
+{\em reg\+Addr} & This is the register address. The follow up register address will be read afterwards. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classi2c__mpu6050_a5337dde97dfb9e5c1f7025ff338fa5d3}\label{classi2c__mpu6050_a5337dde97dfb9e5c1f7025ff338fa5d3}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!read\+\_\+pitch@{read\+\_\+pitch}}
+\index{read\+\_\+pitch@{read\+\_\+pitch}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{read\+\_\+pitch()}{read\_pitch()}}
+{\footnotesize\ttfamily int i2c\+\_\+mpu6050\+::read\+\_\+pitch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function returns the pitch as an integer. 
+
+This function returns the pitch value of the M\+P\+U-\/6050 as an integer. \mbox{\Hypertarget{classi2c__mpu6050_a0ebe5455574a34f7c0355c96f9c30e9c}\label{classi2c__mpu6050_a0ebe5455574a34f7c0355c96f9c30e9c}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!read\+\_\+roll@{read\+\_\+roll}}
+\index{read\+\_\+roll@{read\+\_\+roll}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{read\+\_\+roll()}{read\_roll()}}
+{\footnotesize\ttfamily int i2c\+\_\+mpu6050\+::read\+\_\+roll (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function returns the roll as an integer. 
+
+This function returns the roll value of the M\+P\+U-\/6050 as an integer. \mbox{\Hypertarget{classi2c__mpu6050_afd391b5f5322088d6831a05deaa6c4dd}\label{classi2c__mpu6050_afd391b5f5322088d6831a05deaa6c4dd}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!read\+\_\+values@{read\+\_\+values}}
+\index{read\+\_\+values@{read\+\_\+values}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{read\+\_\+values()}{read\_values()}}
+{\footnotesize\ttfamily void i2c\+\_\+mpu6050\+::read\+\_\+values (\begin{DoxyParamCaption}\item[{int \&}]{g\+AccelX,  }\item[{int \&}]{g\+AccelY,  }\item[{int \&}]{g\+AccelZ }\end{DoxyParamCaption})}
+
+
+
+This function returns the filtered accelerometer values. 
+
+This function returns the filtered accelerometer values in the parameters. 
+\begin{DoxyParams}{Parameters}
+{\em g\+AccelX} & This will receive the filtered value of the accelerometer X axis. \\
+\hline
+{\em g\+AccelY} & This will receive the filtered value of the accelerometer Y axis. \\
+\hline
+{\em g\+AccelZ} & This will receive the filtered value of the accelerometer Z axis. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classi2c__mpu6050_a54a1577831ede549ff05b96403d8ad62}\label{classi2c__mpu6050_a54a1577831ede549ff05b96403d8ad62}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!read\+\_\+word@{read\+\_\+word}}
+\index{read\+\_\+word@{read\+\_\+word}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{read\+\_\+word()}{read\_word()}}
+{\footnotesize\ttfamily int8\+\_\+t i2c\+\_\+mpu6050\+::read\+\_\+word (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \&}]{reg\+Addr }\end{DoxyParamCaption})}
+
+
+
+This function will read 1 byte from a register address. 
+
+This function will read 1 btyte from a register address and returns this as an signed int8\+\_\+t. \mbox{\Hypertarget{classi2c__mpu6050_a92b1262ea3ec807f8b5b36f16b79d812}\label{classi2c__mpu6050_a92b1262ea3ec807f8b5b36f16b79d812}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!set\+\_\+accel\+\_\+gyro\+\_\+scale@{set\+\_\+accel\+\_\+gyro\+\_\+scale}}
+\index{set\+\_\+accel\+\_\+gyro\+\_\+scale@{set\+\_\+accel\+\_\+gyro\+\_\+scale}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{set\+\_\+accel\+\_\+gyro\+\_\+scale()}{set\_accel\_gyro\_scale()}}
+{\footnotesize\ttfamily void i2c\+\_\+mpu6050\+::set\+\_\+accel\+\_\+gyro\+\_\+scale (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{F\+S\+\_\+\+S\+EL,  }\item[{uint8\+\_\+t}]{A\+F\+S\+\_\+\+S\+EL }\end{DoxyParamCaption})}
+
+
+
+This function is to set the accelerometer and gyrometer scaling to your own preferred setting. 
+
+The function can be used to set own preferred settings. The function is constructed to accept 0, 1, 2 or 3 respectively corresponding towards the M\+P\+U-\/6050 Datasheet. It will shift the unsigned integer towards the correct position in the register. 
+\begin{DoxyParams}{Parameters}
+{\em F\+S\+\_\+\+S\+EL} & is to set the Full Scale Range of the gyrometer. \\
+\hline
+{\em A\+F\+S\+\_\+\+S\+EL} & is to set the Accelerometer Full Scale Range. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classi2c__mpu6050_a232b262d69cb592aa65a1ed334104cc1}\label{classi2c__mpu6050_a232b262d69cb592aa65a1ed334104cc1}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!set\+\_\+calibrate\+\_\+values@{set\+\_\+calibrate\+\_\+values}}
+\index{set\+\_\+calibrate\+\_\+values@{set\+\_\+calibrate\+\_\+values}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{set\+\_\+calibrate\+\_\+values()}{set\_calibrate\_values()}}
+{\footnotesize\ttfamily void i2c\+\_\+mpu6050\+::set\+\_\+calibrate\+\_\+values (\begin{DoxyParamCaption}\item[{const int16\+\_\+t \&}]{accel\+Xoffset,  }\item[{const int16\+\_\+t \&}]{accel\+Yoffset,  }\item[{const int16\+\_\+t \&}]{accel\+Zoffset,  }\item[{const int16\+\_\+t \&}]{Gyro\+Xoffset,  }\item[{const int16\+\_\+t \&}]{Gyro\+Yoffset,  }\item[{const int16\+\_\+t \&}]{Gyro\+Zoffset }\end{DoxyParamCaption})}
+
+
+
+A function to set calibrate values manually. 
+
+This function is to set calibrate values manually. 
+\begin{DoxyParams}{Parameters}
+{\em accel\+Xoffset} & The offset for Accelerometer X axis. \\
+\hline
+{\em accel\+Yoffset} & The offset for Accelerometer Y axis. \\
+\hline
+{\em accel\+Zoffset} & The offset for Accelerometer Z axis. \\
+\hline
+{\em Gyro\+Xoffset} & The offset for Gyroscope X axis. \\
+\hline
+{\em Gyro\+Yoffset} & The offset for Gyroscope Y axis. \\
+\hline
+{\em Gyro\+Zoffset} & The offset for Gyroscope Z axis. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classi2c__mpu6050_a643297f7a19d0007979c80ace7c10daa}\label{classi2c__mpu6050_a643297f7a19d0007979c80ace7c10daa}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!set\+\_\+register@{set\+\_\+register}}
+\index{set\+\_\+register@{set\+\_\+register}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{set\+\_\+register()}{set\_register()}}
+{\footnotesize\ttfamily void i2c\+\_\+mpu6050\+::set\+\_\+register (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \&}]{reg\+Addr,  }\item[{const uint8\+\_\+t \&}]{data }\end{DoxyParamCaption})}
+
+
+
+This function sets a specific register. 
+
+This function sets a specific register with the data provided. Use enums for easy usage. the function will make sure the i2c communication is done properly. \mbox{\Hypertarget{classi2c__mpu6050_a184e58b90e30780437d4dd3b0a1f2012}\label{classi2c__mpu6050_a184e58b90e30780437d4dd3b0a1f2012}} 
+\index{i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}!test@{test}}
+\index{test@{test}!i2c\+\_\+mpu6050@{i2c\+\_\+mpu6050}}
+\subsubsection{\texorpdfstring{test()}{test()}}
+{\footnotesize\ttfamily void i2c\+\_\+mpu6050\+::test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A test function to read various registers and output if tests encountered issues or not. 
+
+The test function calls the check\+\_\+identity() function. It also checks if the sleep bit is cleared and if the accelerometer and gyroscope registers are set and have the corresponding accelerometer/gyroscope scale set. it will also return if these registers are N\+OT set properly. If that is the case, make sure you are communicating with the device properly or setting correct values in the register. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{i2c__mpu6050_8hpp}{i2c\+\_\+mpu6050.\+hpp}}\item 
+i2c\+\_\+mpu6050.\+cpp\end{DoxyCompactItemize}

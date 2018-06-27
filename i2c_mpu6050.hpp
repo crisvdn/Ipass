@@ -7,6 +7,7 @@
 /// \mainpage
 /// This is the documentation of the MPU-6050 Library.
 /// \section MPU-6050
+/// \image html rp-mpu-6050.png
 /// references:
 /// - <a href="https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf">
 ///    MPU-6050 Datasheet</a> (pdf)

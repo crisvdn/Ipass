@@ -1,0 +1,70 @@
+\hypertarget{i2c__mpu6050_8hpp}{}\section{i2c\+\_\+mpu6050.\+hpp File Reference}
+\label{i2c__mpu6050_8hpp}\index{i2c\+\_\+mpu6050.\+hpp@{i2c\+\_\+mpu6050.\+hpp}}
+{\ttfamily \#include \char`\"{}hwlib.\+hpp\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classi2c__mpu6050}{i2c\+\_\+mpu6050}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classi2c__mpu6050}{i2c\+\_\+mpu6050}} class creates an object out of an bus and a hexademical chip address from the M\+P\+U-\/6050. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{i2c__mpu6050_8hpp_ad549052e62776469db5191116db40fd2}{commands}} \+: uint8\+\_\+t \{ \newline
+{\bfseries G\+Y\+R\+O\+\_\+\+C\+O\+N\+F\+IG} = 0x1B, 
+{\bfseries A\+C\+C\+E\+L\+\_\+\+C\+O\+N\+F\+IG} = 0x1C, 
+{\bfseries P\+W\+R\+\_\+\+M\+G\+M\+T\+\_\+1} = 0x6B, 
+{\bfseries F\+I\+F\+O\+\_\+\+EN} = 0x23, 
+\newline
+{\bfseries C\+O\+N\+F\+IG} = 0x1A, 
+{\bfseries W\+H\+O\+\_\+\+A\+M\+\_\+I} = 0x75, 
+{\bfseries A\+C\+C\+E\+L\+\_\+\+X\+O\+U\+T\+\_\+H} = 0x3B, 
+{\bfseries A\+C\+C\+E\+L\+\_\+\+X\+O\+U\+T\+\_\+L} = 0x3C, 
+\newline
+{\bfseries A\+C\+C\+E\+L\+\_\+\+Y\+O\+U\+T\+\_\+H} = 0x3D, 
+{\bfseries A\+C\+C\+E\+L\+\_\+\+Y\+O\+U\+T\+\_\+L} = 0x3E, 
+{\bfseries A\+C\+C\+E\+L\+\_\+\+Z\+O\+U\+T\+\_\+H} = 0x3F, 
+{\bfseries A\+C\+C\+E\+L\+\_\+\+Z\+O\+U\+T\+\_\+L} = 0x40, 
+\newline
+{\bfseries T\+E\+M\+P\+\_\+\+O\+U\+T\+\_\+H} = 0x41, 
+{\bfseries T\+E\+M\+P\+\_\+\+O\+U\+T\+\_\+L} = 0x42, 
+{\bfseries G\+Y\+R\+O\+\_\+\+X\+O\+U\+T\+\_\+H} = 0x43, 
+{\bfseries G\+Y\+R\+O\+\_\+\+X\+O\+U\+T\+\_\+L} = 0x44, 
+\newline
+{\bfseries G\+Y\+R\+O\+\_\+\+Y\+O\+U\+T\+\_\+H} = 0x45, 
+{\bfseries G\+Y\+R\+O\+\_\+\+Y\+O\+U\+T\+\_\+L} = 0x46, 
+{\bfseries G\+Y\+R\+O\+\_\+\+Z\+O\+U\+T\+\_\+H} = 0x47, 
+{\bfseries G\+Y\+R\+O\+\_\+\+Z\+O\+U\+T\+\_\+L} = 0x48, 
+\newline
+{\bfseries A\+F\+S\+\_\+\+S\+E\+L\+\_\+0} = 0x00, 
+{\bfseries A\+F\+S\+\_\+\+S\+E\+L\+\_\+1} = 0x08, 
+{\bfseries A\+F\+S\+\_\+\+S\+E\+L\+\_\+2} = 0x10, 
+{\bfseries A\+F\+S\+\_\+\+S\+E\+L\+\_\+3} = 0x18, 
+\newline
+{\bfseries F\+S\+\_\+\+S\+E\+L\+\_\+0} = 0x00, 
+{\bfseries F\+S\+\_\+\+S\+E\+L\+\_\+1} = 0x08, 
+{\bfseries F\+S\+\_\+\+S\+E\+L\+\_\+2} = 0x10, 
+{\bfseries F\+S\+\_\+\+S\+E\+L\+\_\+3} = 0x18, 
+\newline
+{\bfseries S\+L\+E\+E\+P\+\_\+\+D\+I\+S\+A\+B\+L\+ED} = 0x00
+ \}
+\begin{DoxyCompactList}\small\item\em Enum commands to define register addresses and register most-\/used values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{i2c__mpu6050_8hpp_ad549052e62776469db5191116db40fd2}\label{i2c__mpu6050_8hpp_ad549052e62776469db5191116db40fd2}} 
+\index{i2c\+\_\+mpu6050.\+hpp@{i2c\+\_\+mpu6050.\+hpp}!commands@{commands}}
+\index{commands@{commands}!i2c\+\_\+mpu6050.\+hpp@{i2c\+\_\+mpu6050.\+hpp}}
+\subsubsection{\texorpdfstring{commands}{commands}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{i2c__mpu6050_8hpp_ad549052e62776469db5191116db40fd2}{commands}} \+: uint8\+\_\+t}
+
+
+
+Enum commands to define register addresses and register most-\/used values. 
+
+These enum commands either point to a hexadecimal register address for the M\+P\+U-\/6050 or hexadecimal values most used to write towards a register. If you want to read or write to a register, it is highly recommended to use the enum commands to avoid making mistakes. Accelerometer and gyroscope registers consist of 2 bytes. The \+\_\+H is the M\+SB and the \+\_\+L is the L\+SB.
+
+references\+:
+\begin{DoxyItemize}
+\item \href{https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf}{\tt M\+P\+U-\/6050 Datasheet} (pdf)
+\item \href{https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Register-Map1.pdf}{\tt M\+P\+U-\/6050 Register Map} (pdf) 
+\end{DoxyItemize}
