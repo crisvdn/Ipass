@@ -70,9 +70,9 @@ $(function() {
 <div class="image">
 <img src="https://i.imgur.com/NcQi8zY.png" alt="alt text"/>
 </div>
-<p>Link to datasheet: <a href="https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf">https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf</a></p>
-<p>Link to register map: <a href="https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Register-Map1.pdf">https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Register-Map1.pdf</a></p>
-<p>Code example to use this ibrary.</p>
+<p>Link to the datasheet: <a href="https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf">https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf</a></p>
+<p>Link to the register map: <a href="https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Register-Map1.pdf">https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Register-Map1.pdf</a></p>
+<p>Code example to use this library.</p>
 <div class="fragment"><div class="line">#include &quot;hwlib.hpp&quot;</div><div class="line">#include &quot;i2c_mpu6050.hpp&quot;</div><div class="line"></div><div class="line">int main(){</div><div class="line">      uint8_t MPU_addr = 0x68;</div><div class="line">      hwlib::wait_ms(500);</div><div class="line">      //disable watchdog.</div><div class="line">      WDT-&gt;WDT_MR = WDT_MR_WDDIS;</div><div class="line">      namespace target = hwlib::target;</div><div class="line"></div><div class="line">      //creating scl &amp; sda pins.</div><div class="line">      auto scl = target::pin_oc(target::pins::d9);</div><div class="line">      auto sda = target::pin_oc(target::pins::d8);</div><div class="line">      //creating mpu6050 object. assigning address &amp; bus.</div><div class="line">      auto mpu = i2c_mpu6050(bus, MPU_addr);</div><div class="line">      mpu.display_calibrate_values();</div><div class="line">      mpu.test();</div><div class="line">      //output roll &amp; pitch to screen.</div><div class="line">      mpu.display_roll_pitch();</div><div class="line">}</div></div><!-- fragment --> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

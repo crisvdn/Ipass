@@ -251,7 +251,28 @@ The function can be used to set own preferred settings. The function is construc
 \begin{DoxyParams}{Parameters}
 {\em F\+S\+\_\+\+S\+EL} & is to set the Full Scale Range of the gyrometer. \\
 \hline
-{\em A\+F\+S\+\_\+\+S\+EL} & is to set the Accelerometer Full Scale Range. \\
+{\em A\+F\+S\+\_\+\+S\+EL} & is to set the Accelerometer Full Scale Range. 
+\begin{DoxyCode}
+ACCELEROMETER SENSITIVITY Full Scale Range
+AFS\_SEL=0   ±2  16,384  LSB/g
+AFS\_SEL=1   ±4  8,192   LSB/g   
+AFS\_SEL=2   ±8  4,096   LSB/g
+AFS\_SEL=3   ±16 2,048   LSB/g
+
+Accelerometer sensitivity is \textcolor{keyword}{set} to ±8. The raw values need to be divided by 4096(minus the offset) to \textcolor{keyword}{get} 
+      the values in linear gravitational accelaration.
+
+
+GYROSCOPE   SENSITIVITY     Full-Scale Range    
+FS\_SEL=0        131             ±250 º/s    LSB/(º/s)
+FS\_SEL=1        65.5            ±500 º/s    LSB/(º/s)
+FS\_SEL=2        32.8            ±1000 º/s   LSB/(º/s)
+FS\_SEL=3        16.4            ±2000 º/s   LSB/(º/s)
+
+Gyroscope sensitivity is \textcolor{keyword}{set} to 250 degrees per second. The raw values need to be divided by 131(minus the 
+      offset) to \textcolor{keyword}{get} the values of angular change in degrees per second.
+\end{DoxyCode}
+ \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classi2c__mpu6050_a232b262d69cb592aa65a1ed334104cc1}\label{classi2c__mpu6050_a232b262d69cb592aa65a1ed334104cc1}} 

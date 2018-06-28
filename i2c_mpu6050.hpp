@@ -6,6 +6,7 @@
 
 /// \mainpage
 /// This is the documentation of the MPU-6050 Library.
+/// For naming conventions of the functions, see \ref Page1
 /// \section MPU-6050
 /// The MPU-6050 is a gyroscope and a accelerometer which measures in X, Y and Z axis.
 /// The MPU-6050 also contains a temperature sensor which it uses to receive stable readings.
@@ -17,7 +18,7 @@
 /// - <a href="https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Register-Map1.pdf">
 ///    MPU-6050 Register Map</A> (pdf)
 /// \section Boost Author
-///
+/// 	
 ///		Author: Cris van der Nolle
 ///		Name: i2c_mpu6050
 ///		Date: 27-6-2018
@@ -199,6 +200,25 @@ public:
 /// the register.
 ///@param FS_SEL is to set the Full Scale Range of the gyrometer.
 ///@param AFS_SEL is to set the Accelerometer Full Scale Range.
+/// \code
+///
+///ACCELEROMETER SENSITIVITY Full Scale Range
+///AFS_SEL=0 	±2	16,384 	LSB/g
+///AFS_SEL=1 	±4	8,192	LSB/g	
+///AFS_SEL=2 	±8	4,096 	LSB/g
+///AFS_SEL=3 	±16	2,048 	LSB/g
+///
+///Accelerometer sensitivity is set to ±8. The raw values need to be divided by 4096(minus the offset) to get the values in linear gravitational accelaration.
+///
+///
+///GYROSCOPE 	SENSITIVITY		Full-Scale Range 	
+///FS_SEL=0 		131				±250 º/s	LSB/(º/s)
+///FS_SEL=1 		65.5			±500 º/s	LSB/(º/s)
+///FS_SEL=2 		32.8			±1000 º/s	LSB/(º/s)
+///FS_SEL=3 		16.4			±2000 º/s	LSB/(º/s)
+///
+///Gyroscope sensitivity is set to 250 degrees per second. The raw values need to be divided by 131(minus the offset) to get the values of angular change in degrees per second.
+/// \endcode
 	void set_accel_gyro_scale(uint8_t FS_SEL, uint8_t AFS_SEL);
 ///\brief
 /// This function sets a specific register.
@@ -301,6 +321,44 @@ public:
 /// Make sure to not move the MPU-6050 for proper calibration.
 	void calibrate();
 };
+
+/// \page Page1 Naming conventions.
+///  \tableofcontents
+///  The following naming conventions are used:
+///  \section sec Function
+///  This page contains the subsections \ref subsection1 and \ref subsection2.
+///  \subsection subsection1 read functions.
+///  All functions that start with read, return the value insided a user defined variable.
+///  It is used so the user can decide what to do with this information. For example: show on any kind of display or manipulate data with his/her own functions.
+///	 \n Examples:
+///		\code
+///		read_accelX();
+///		read_accelY();
+///		read_accelZ();
+///		read_bytes();
+///		read_pitch();
+///		read_roll();
+///		read_values();
+///		read_word();
+///		\endcode
+/// \subsection subsection2 Display functions.
+///  All functions that start with display, outputs the data towards the screen using hwlib::cout.
+///   \n Examples: 
+///		\code
+///			display_calibrate_values();
+///			display_raw_values();
+///			display_roll_pitch();
+///			display_values();
+///		\endcode
+///  \subsection subsection3 Set and Get functions.
+///   All functions that start with set and get, either returns the value towards the datatype mentioned, or sets the value the user has inserted.
+///	 \n Examples:
+///		\code
+///			set_accel_gyro_scale();
+///			set_calibrate_values();
+///			set_register();
+///		\endcode
+///
 
 
 #endif		//I2C_MPU6050_HPP

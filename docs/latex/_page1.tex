@@ -1,0 +1,32 @@
+The following naming conventions are used\+: \hypertarget{_page1_sec}{}\section{Function}\label{_page1_sec}
+This page contains the subsections \mbox{\hyperlink{_page1_subsection1}{read functions.}} and \mbox{\hyperlink{_page1_subsection2}{Display functions.}}. \hypertarget{_page1_subsection1}{}\subsection{read functions.}\label{_page1_subsection1}
+All functions that start with read, return the value insided a user defined variable. It is used so the user can decide what to do with this information. For example\+: show on any kind of display or manipulate data with his/her own functions. ~\newline
+ Examples\+: 
+\begin{DoxyCode}
+read\_accelX();
+read\_accelY();
+read\_accelZ();
+read\_bytes();
+read\_pitch();
+read\_roll();
+read\_values();
+read\_word();
+\end{DoxyCode}
+ \hypertarget{_page1_subsection2}{}\subsection{Display functions.}\label{_page1_subsection2}
+All functions that start with display, outputs the data towards the screen using hwlib\+::cout. ~\newline
+ Examples\+: 
+\begin{DoxyCode}
+display\_calibrate\_values();
+display\_raw\_values();
+display\_roll\_pitch();
+display\_values();
+\end{DoxyCode}
+ \hypertarget{_page1_subsection3}{}\subsection{Set and Get functions.}\label{_page1_subsection3}
+All functions that start with set and get, either returns the value towards the datatype mentioned, or sets the value the user has inserted. ~\newline
+ Examples\+: 
+\begin{DoxyCode}
+set\_accel\_gyro\_scale();
+set\_calibrate\_values();
+set\_register();
+\end{DoxyCode}
+ 
