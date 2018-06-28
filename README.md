@@ -8,13 +8,13 @@ This library supports only I2C communication. So any versions like the MPU-6000 
 
 ![alt text](https://i.imgur.com/NcQi8zY.png)
 
-Link to datasheet:
+Link to the datasheet:
 https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf
 
-Link to register map:
+Link to the register map:
 https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Register-Map1.pdf
 
-Code example to use this ibrary.
+Code example to use this library.
 
 
 ```
