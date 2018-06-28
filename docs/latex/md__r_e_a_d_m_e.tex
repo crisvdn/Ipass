@@ -1,5 +1,36 @@
 This is a library for the M\+P\+U-\/6050. This library interfaces with the M\+P\+U-\/6050 Gyroscope and Accelerometer. It provides functionality to output the data easily to the screen or return it so you can do anything with it. Any customisation for user-\/preferred settings can be done by supporting functions in this libary.
 
+This library supports only I2C communication. So any versions like the M\+P\+U-\/6000 are not supported(\+S\+P\+I).
+
+
+
 Link to datasheet\+: \href{https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf}{\tt https\+://www.\+invensense.\+com/wp-\/content/uploads/2015/02/\+M\+P\+U-\/6000-\/\+Datasheet1.\+pdf}
 
-Link to register map\+: \href{https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Register-Map1.pdf}{\tt https\+://www.\+invensense.\+com/wp-\/content/uploads/2015/02/\+M\+P\+U-\/6000-\/\+Register-\/\+Map1.\+pdf} 
+Link to register map\+: \href{https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Register-Map1.pdf}{\tt https\+://www.\+invensense.\+com/wp-\/content/uploads/2015/02/\+M\+P\+U-\/6000-\/\+Register-\/\+Map1.\+pdf}
+
+Code example to use this ibrary.
+
+
+\begin{DoxyCode}
+#include "hwlib.hpp"
+#include "i2c\_mpu6050.hpp"
+
+int main()\{
+      uint8\_t MPU\_addr = 0x68;
+      hwlib::wait\_ms(500);
+      //disable watchdog.
+      WDT->WDT\_MR = WDT\_MR\_WDDIS;
+      namespace target = hwlib::target;
+
+      //creating scl & sda pins.
+      auto scl = target::pin\_oc(target::pins::d9);
+      auto sda = target::pin\_oc(target::pins::d8);
+      //creating mpu6050 object. assigning address & bus.
+      auto mpu = i2c\_mpu6050(bus, MPU\_addr);
+      mpu.display\_calibrate\_values();
+      mpu.test();
+      //output roll & pitch to screen.
+      mpu.display\_roll\_pitch();
+\}
+\end{DoxyCode}
+ 
