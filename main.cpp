@@ -56,7 +56,6 @@ int main(){
 	//creating mpu6050 object. assigning address & bus.
 	auto mpu = i2c_mpu6050(bus, MPU_addr);
 	mpu.display_calibrate_values();
-	mpu.display_values();
 	while(1){
 		//creating simple menu to switch between displays with 2 buttons.
 		if(!button_forward.get()){
