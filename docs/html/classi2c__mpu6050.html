@@ -217,8 +217,10 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>This function outputs the calibrate values to the screen. </p>
-<p>This function is a get function for the calibrate values of the gyroscope X, Y and Z axis, and the accelerometer X, Y and Z axis. </p>
-
+<p>This function is a get function for the calibrate values of the gyroscope X, Y and Z axis, and the accelerometer X, Y and Z axis. </p><div class="image">
+<img src="example_offset.png" alt="example_offset.png"/>
+</div>
+ 
 </div>
 </div>
 <a id="a24a1e7c044411670d724d1c3e411eea5"></a>
@@ -257,8 +259,10 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>This function outputs the roll and pitch to the screen. </p>
-<p>This function outputs roll and pitch towards the screen in degrees. A negative value will be towards rolling towards the right or tilting with the front of the sensor downwards. </p>
-
+<p>This function outputs roll and pitch towards the screen in degrees. A negative value will be towards rolling towards the right or tilting with the front of the sensor downwards. </p><div class="image">
+<img src="example_pitch_roll.png" alt="example_pitch_roll.png"/>
+</div>
+ 
 </div>
 </div>
 <a id="ac5035930b0bc113e67c2838e17ae1460"></a>
@@ -277,8 +281,10 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>A function to output filtered values of the accelerometer, temperature sensor and gyroscope to the screen. </p>
-<p>This function outputs raw values of the accelerometer(X, Y and Z axis), temperature reading(in °C) and gyroscope(X, Y, and Z axis). These values have been filtered with the offset and scaling. The gyroscope readings are in degrees per second. The accelerometer readings are in G-force. </p>
-
+<p>This function outputs raw values of the accelerometer(X, Y and Z axis), temperature reading(in °C) and gyroscope(X, Y, and Z axis). These values have been filtered with the offset and scaling. The gyroscope readings are in degrees per second. The accelerometer readings are in G-force. </p><div class="image">
+<img src="example_display_values.png" alt="example_display_values.png"/>
+</div>
+ 
 </div>
 </div>
 <a id="a2c5020be3e7dda0123748577ce3346f5"></a>
@@ -661,8 +667,10 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>A test function to read various registers and output if tests encountered issues or not. </p>
-<p>The test function calls the check_identity() function. It also checks if the sleep bit is cleared and if the accelerometer and gyroscope registers are set and have the corresponding accelerometer/gyroscope scale set. it will also return if these registers are NOT set properly. If that is the case, make sure you are communicating with the device properly or setting correct values in the register. </p>
-
+<p>The test function calls the check_identity() function. It also checks if the sleep bit is cleared and if the accelerometer and gyroscope registers are set and have the corresponding accelerometer/gyroscope scale set. it will also return if these registers are NOT set properly. If that is the case, make sure you are communicating with the device properly or setting correct values in the register. </p><div class="image">
+<img src="example_test.png" alt="example_test.png"/>
+</div>
+ 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>

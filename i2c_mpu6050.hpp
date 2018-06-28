@@ -9,6 +9,7 @@
 /// \section MPU-6050
 /// The MPU-6050 is a gyroscope and a accelerometer which measures in X, Y and Z axis.
 /// The MPU-6050 also contains a temperature sensor which it uses to receive stable readings.
+/// i2c_mpu6050
 /// \image html rp-mpu-6050.png
 /// references:
 /// - <a href="https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf">
@@ -140,6 +141,7 @@ private:
 /// will be set to preferred settings.
 /// The general config register only sets the Digital Low Pass Filter to mode 4(refer to datasheet for further
 /// information)
+/// \image html example_initialize.png
 	void initialize();
 ///\brief
 /// Simple function to print a header format.
@@ -175,6 +177,7 @@ public:
 /// if the accelerometer and gyroscope registers are set and have the corresponding accelerometer/gyroscope scale set.
 /// it will also return if these registers are NOT set properly. If that is the case, make sure you are communicating with the device
 /// properly or setting correct values in the register.
+/// \image html example_test.png
 	void test();
 ///\brief
 /// This function reads the gyrometer register and sets the correct scaling integer.
@@ -229,18 +232,21 @@ public:
 /// These values have been filtered with the offset and scaling.
 /// The gyroscope readings are in degrees per second.
 /// The accelerometer readings are in G-force.
+/// \image html example_display_values.png
 	void display_values();
 ///\brief
 /// This function outputs the roll and pitch to the screen.
 ///\details
 /// This function outputs roll and pitch towards the screen in degrees.
 /// A negative value will be towards rolling towards the right or tilting with the front of the sensor downwards.
+/// \image html example_pitch_roll.png
 	void display_roll_pitch(); //rp is short for roll & pitch.
 
 ///\brief
 /// This function outputs the calibrate values to the screen.
 ///\details
 /// This function is a get function for the calibrate values of the gyroscope X, Y and Z axis, and the accelerometer X, Y and Z axis.
+/// \image html example_offset.png
 	void display_calibrate_values();
 ///\brief
 /// This function returns the roll as an integer.
@@ -294,10 +300,6 @@ public:
 /// stable readings in the second 10 readings.
 /// Make sure to not move the MPU-6050 for proper calibration.
 	void calibrate();
-///\brief
-///
-///\details
-///
 };
 
 
