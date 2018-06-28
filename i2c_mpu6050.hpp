@@ -7,6 +7,8 @@
 /// \mainpage
 /// This is the documentation of the MPU-6050 Library.
 /// \section MPU-6050
+/// The MPU-6050 is a gyroscope and a accelerometer which measures in X, Y and Z axis.
+/// The MPU-6050 also contains a temperature sensor which it uses to receive stable readings.
 /// \image html rp-mpu-6050.png
 /// references:
 /// - <a href="https://www.invensense.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf">
@@ -87,6 +89,13 @@ enum commands : uint8_t {
 	FS_SEL_1 = 0x08,
 	FS_SEL_2 = 0x10,
 	FS_SEL_3 = 0x18,
+	DLPF_CONFIG_0 = 0x00,
+	DLPF_CONFIG_1 = 0x01,
+	DLPF_CONFIG_2 = 0x02,
+	DLPF_CONFIG_3 = 0x03,
+	DLPF_CONFIG_4 = 0x04,
+	DLPF_CONFIG_5 = 0x05,
+	DLPF_CONFIG_6 = 0x06,
 	SLEEP_DISABLED = 0x00
 };
 
@@ -122,7 +131,7 @@ private:
 /// Pi defined.
 ///\details
 ///	Pi defined for calculating pitch and roll.	
-	double pi = 3.141592;
+	const double pi = 3.141592;
 
 ///\brief
 /// Initialize sets four registers to recommended settings.

@@ -8,7 +8,7 @@ void i2c_mpu6050::initialize(){
 	set_register(PWR_MGMT_1, SLEEP_DISABLED); //Set sleep bit to 0. This will activate the chip.
 	set_register(ACCEL_CONFIG, AFS_SEL_1); //Set Accel configuration to ±4g Acceleration sensitivity.
 	set_register(GYRO_CONFIG, FS_SEL_0); //set Gyro configuration to 250 degrees/s
-	set_register(CONFIG, 0x05); //Set config mode Digital Low Pass Filter to 2.
+	set_register(CONFIG, DLPF_CONFIG_5); //Set config mode Digital Low Pass Filter to mode 5.
 }
 
 //ACCELEROMETER SENSITIVITY Full Scale Range
